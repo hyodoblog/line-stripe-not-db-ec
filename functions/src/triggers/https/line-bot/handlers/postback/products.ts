@@ -22,8 +22,6 @@ export const postbackProductsHandler = async (event: PostbackEvent): Promise<voi
       })
     )
 
-    console.info(_products)
-
     await lineClient.replyMessage(event.replyToken, msgProducts(_products))
   } catch (err) {
     errorLogger(err)
