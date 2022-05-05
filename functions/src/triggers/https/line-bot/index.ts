@@ -1,5 +1,5 @@
 import { middleware } from '@line/bot-sdk'
-import { logger, region, RuntimeOptions } from 'firebase-functions'
+import { region, RuntimeOptions } from 'firebase-functions'
 import express from 'express'
 import { lineMiddlewareConfig } from '~/utils/line'
 import { errorLogger } from '~/utils/util'
@@ -10,8 +10,7 @@ const app = express()
 app.use(middleware(lineMiddlewareConfig))
 app.post('/', (req, res) =>
   Promise.all(req.body.events.map(handlers))
-    .then((result) => {
-      logger.info(result)
+    .then(() => {
       res.status(200).end()
     })
     .catch((err) => {
