@@ -2,7 +2,8 @@
   "name": "functions",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist && tsc",
+    "build": "tsc",
+    "build:re": "rm -rf dist && yarn build",
     "dev": "yarn build && firebase emulators:start --only functions",
     "shell": "yarn build && firebase functions:shell",
     "start": "yarn shell",
