@@ -1,13 +1,8 @@
-import { FlexMessage, TextMessage } from '@line/bot-sdk'
-
-export const msgOther: TextMessage = {
-  type: 'text',
-  text: 'テキスト以外のメッセージを受信しました'
-}
+import { FlexMessage } from '@line/bot-sdk'
 
 export const msgError: FlexMessage = {
   type: 'flex',
-  altText: 'エラーが発生しました',
+  altText: 'アクセスが集中しているため、少し時間をおいてください...',
   contents: {
     type: 'bubble',
     direction: 'ltr',
@@ -17,7 +12,7 @@ export const msgError: FlexMessage = {
       contents: [
         {
           type: 'text',
-          text: 'エラーが発生しました',
+          text: 'アクセスが集中しているため、少し時間をおいてください...',
           align: 'start',
           wrap: true
         }
@@ -31,8 +26,8 @@ export const msgError: FlexMessage = {
           type: 'button',
           action: {
             type: 'uri',
-            label: '報告する',
-            uri: 'https://twitter.com/hyodoblog'
+            label: '導入を検討したい方はこちら',
+            uri: 'https://yoshinani.dev?openExternalBrowser=1'
           },
           style: 'primary'
         }
