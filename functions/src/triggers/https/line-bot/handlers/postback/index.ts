@@ -1,5 +1,6 @@
 import { PostbackEvent } from '@line/bot-sdk'
 import { errorLogger } from '~/utils/util'
+import { postbackMypageHandler } from './mypage'
 import { postbackProductsHandler } from './products'
 
 export const postbackHandler = async (event: PostbackEvent): Promise<void> => {
@@ -8,7 +9,7 @@ export const postbackHandler = async (event: PostbackEvent): Promise<void> => {
       case 'products':
         return await postbackProductsHandler(event)
       case 'mypage':
-        break
+        return await postbackMypageHandler(event)
     }
   } catch (err) {
     errorLogger(err)

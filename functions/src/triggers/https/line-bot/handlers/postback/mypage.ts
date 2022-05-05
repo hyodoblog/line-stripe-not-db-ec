@@ -4,7 +4,7 @@ import { getCustomer, stripe } from '~/utils/stripe'
 import { errorLogger } from '~/utils/util'
 import { msgMypage } from '~line/notice-messages/mypage'
 
-export const postbackProductsHandler = async (event: PostbackEvent): Promise<void> => {
+export const postbackMypageHandler = async (event: PostbackEvent): Promise<void> => {
   try {
     const customer = await getCustomer(event.source.userId!)
     const { url } = await stripe.billingPortal.sessions.create({ customer: customer.id })
