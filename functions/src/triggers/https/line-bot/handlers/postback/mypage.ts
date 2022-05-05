@@ -7,7 +7,10 @@ import { msgMypage } from '~line/notice-messages/mypage'
 export const postbackMypageHandler = async (event: PostbackEvent): Promise<void> => {
   try {
     const customer = await getCustomer(event.source.userId!)
-    const { url } = await stripe.billingPortal.sessions.create({ customer: customer.id })
+    const { url } = await stripe.billingPortal.sessions.create({
+      customer: customer.id,
+      return_url: 'https://lin.ee/22IrKZs'
+    })
 
     await lineClient.replyMessage(event.replyToken, msgMypage(url))
   } catch (err) {
