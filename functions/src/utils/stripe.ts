@@ -18,3 +18,10 @@ export const createCustomer = async (userId: string): Promise<void> => {
     }
   })
 }
+
+// products
+
+export const getProducts = async (): Promise<Stripe.Product[]> => {
+  const { data } = await stripe.products.list()
+  return data
+}
