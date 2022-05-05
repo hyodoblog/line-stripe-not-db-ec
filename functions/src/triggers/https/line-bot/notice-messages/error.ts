@@ -27,7 +27,7 @@ export const msgError: FlexMessage = {
           action: {
             type: 'uri',
             label: '導入を検討したい方はこちら',
-            uri: 'https://yoshinani.dev?openExternalBrowser=1'
+            uri: 'https://yoshinani.dev'
           },
           style: 'primary'
         }

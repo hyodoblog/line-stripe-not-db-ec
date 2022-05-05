@@ -44,7 +44,7 @@ export const richmenuData1: RichMenu = {
       },
       action: {
         type: 'uri',
-        uri: 'https://yoshinani.dev?openExternalBrowser=1'
+        uri: 'https://yoshinani.dev'
       }
     },
     {
