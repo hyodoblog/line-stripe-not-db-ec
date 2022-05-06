@@ -11,7 +11,7 @@
     "eslint": "eslint --ext \".ts\" . --fix",
     "prettier": "prettier --write .",
     "lint": "yarn eslint && yarn prettier",
-    "init:migration": "yarn build && node dist/migrations/rich-menu"
+    "init:richmenu": "yarn build && node dist/migrations/rich-menu"
   },
   "engines": {
     "node": "16"
