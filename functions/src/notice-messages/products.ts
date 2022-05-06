@@ -68,8 +68,8 @@ export const msgProducts = (products: MsgProductList[]): FlexMessage => {
             type: 'button',
             action: {
               type: 'postback',
-              label: '今すぐ購入する',
-              displayText: '今すぐ購入する。',
+              label: '単体で購入する',
+              displayText: '単体で購入する。',
               data: `products.good.${product.priceId}`
             },
             style: 'primary'

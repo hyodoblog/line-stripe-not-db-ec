@@ -17,8 +17,8 @@ export const msgProduct = (product: MsgProduct): FlexMessage => {
       type: 'button',
       action: {
         type: 'postback',
-        label: `今すぐ購入する(¥${Number(product.goodAmount).toLocaleString()})`,
-        text: '今すぐ購入する。',
+        label: `単体で購入する(¥${Number(product.goodAmount).toLocaleString()})`,
+        text: '単体で購入する。',
         data: `products.good.${product.goodPriceId}`
       },
       style: 'primary'
