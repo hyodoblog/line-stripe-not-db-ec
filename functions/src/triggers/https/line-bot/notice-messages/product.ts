@@ -1,16 +1,42 @@
-import { FlexBubble, FlexMessage } from '@line/bot-sdk'
+import { FlexBubble, FlexComponent, FlexMessage } from '@line/bot-sdk'
 
 export interface MsgProduct {
   name: string
   imgUrl: string
   description: string
-  goodAmount: number
-  serviceAmount: number
-  goodPriceId: string
-  servicePriceId: string
+  goodAmount: number | null
+  serviceAmount: number | null
+  goodPriceId: string | null
+  servicePriceId: string | null
 }
 
 export const msgProduct = (product: MsgProduct): FlexMessage => {
+  const footerContents: FlexComponent[] = []
+  if (product.goodPriceId !== null && product.goodAmount !== null) {
+    footerContents.push({
+      type: 'button',
+      action: {
+        type: 'postback',
+        label: `今すぐ購入する(¥${Number(product.goodAmount).toLocaleString()})`,
+        text: '今すぐ購入する。',
+        data: `products.good.${product.goodPriceId}`
+      },
+      style: 'primary'
+    })
+  }
+  if (product.servicePriceId !== null && product.serviceAmount !== null) {
+    footerContents.push({
+      type: 'button',
+      action: {
+        type: 'postback',
+        label: `定期購入する(¥${Number(product.serviceAmount).toLocaleString()})`,
+        text: '定期購入する。',
+        data: `products.service.${product.servicePriceId}`
+      },
+      style: 'primary'
+    })
+  }
+
   const contents: FlexBubble = {
     type: 'bubble',
     size: 'giga',
@@ -56,30 +82,9 @@ export const msgProduct = (product: MsgProduct): FlexMessage => {
     footer: {
       type: 'box',
       layout: 'vertical',
-      spacing: 'lg',
+      spacing: 'md',
       margin: 'md',
-      contents: [
-        {
-          type: 'button',
-          action: {
-            type: 'postback',
-            label: '今すぐ購入する',
-            displayText: '今すぐ購入する',
-            data: `products.good.${product.goodPriceId}`
-          },
-          style: 'primary'
-        },
-        {
-          type: 'button',
-          action: {
-            type: 'postback',
-            label: '詳細を見る',
-            displayText: '詳細を見る。',
-            data: `products.service.${product.servicePriceId}`
-          },
-          style: 'secondary'
-        }
-      ]
+      contents: footerContents
     }
   }
 

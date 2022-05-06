@@ -25,3 +25,10 @@ export const getProducts = async (): Promise<Stripe.Product[]> => {
   const { data } = await stripe.products.list()
   return data
 }
+
+// prices
+
+export const getPricesByProductId = async (productId: string): Promise<Stripe.Price[]> => {
+  const { data } = await stripe.prices.search({ query: `product: '${productId}'` })
+  return data
+}
