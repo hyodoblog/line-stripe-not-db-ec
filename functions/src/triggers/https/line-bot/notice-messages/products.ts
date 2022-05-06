@@ -62,7 +62,7 @@ export const msgProducts = (products: MsgProductList[]): FlexMessage => {
       footer: {
         type: 'box',
         layout: 'vertical',
-        spacing: 'sm',
+        spacing: 'md',
         contents: [
           {
             type: 'button',
