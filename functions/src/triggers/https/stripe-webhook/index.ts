@@ -3,7 +3,7 @@ import { logger, region, RuntimeOptions } from 'firebase-functions'
 
 import signatureMiddleware from './middleware/signature.middleware'
 import customerSubscriptionCreated from './webhook/customer-subscription-created'
-import paymentIntentSucceeded from './webhook/payment_intent.succeeded'
+import customerSubscriptionDeleted from './webhook/customer-subscription-deleted'
 
 const app = express()
 
@@ -19,8 +19,8 @@ const handler = async (req: Request, res: Response) => {
       case 'customer.subscription.created':
         await customerSubscriptionCreated(event)
         break
-      case 'payment_intent.succeeded':
-        await paymentIntentSucceeded(event)
+      case 'customer.subscription.deleted':
+        await customerSubscriptionDeleted(event)
         break
       default:
         throw new Error('stripe event type is not found.')
