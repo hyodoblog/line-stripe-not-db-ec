@@ -7,22 +7,10 @@ import { postbackProductsHandler } from './products'
 export const postbackHandler = async (event: PostbackEvent): Promise<void> => {
   try {
     const { data } = event.postback
-    switch (data) {
-      case 'products':
-        return await postbackProductsHandler(event)
-      case 'mypage':
-        return await postbackMypageHandler(event)
-    }
-
-    if (data.includes('products_')) {
-      const [, productType, priceId] = data.split('_') as [any, Stripe.Product.Type, string]
-      console.info(productType, priceId)
-      switch (productType) {
-        case 'good':
-          return
-        case 'service':
-          return
-      }
+    if (data.includes('products')) {
+      return await postbackProductsHandler(event)
+    } else if (data === 'mypage') {
+      return await postbackMypageHandler(event)
     }
   } catch (err) {
     errorLogger(err)

@@ -1,6 +1,6 @@
 import { FlexBubble, FlexCarousel, FlexMessage } from '@line/bot-sdk'
 
-export interface MsgProduct {
+export interface MsgProductList {
   productId: string
   priceId: string
   name: string
@@ -8,9 +8,7 @@ export interface MsgProduct {
   amount: number
 }
 
-export type ProductType = 'single' | ''
-
-export const msgProducts = (products: MsgProduct[]): FlexMessage => {
+export const msgProducts = (products: MsgProductList[]): FlexMessage => {
   const productContents: FlexBubble[] = []
 
   for (const product of products) {
@@ -71,6 +69,7 @@ export const msgProducts = (products: MsgProduct[]): FlexMessage => {
             action: {
               type: 'postback',
               label: '今すぐ購入する',
+              displayText: '今すぐ購入する。',
               data: `products_good_${product.priceId}`
             },
             style: 'primary'
@@ -80,7 +79,8 @@ export const msgProducts = (products: MsgProduct[]): FlexMessage => {
             action: {
               type: 'postback',
               label: '詳細を見る',
-              data: `products_detail`
+              displayText: '詳細を見る。',
+              data: `products_detail_${product.productId}`
             },
             style: 'secondary'
           }
