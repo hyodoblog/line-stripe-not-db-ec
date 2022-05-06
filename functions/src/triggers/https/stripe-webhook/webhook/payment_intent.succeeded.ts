@@ -1,4 +1,5 @@
 import { Stripe } from 'stripe'
+import { msgPurchaseComplete } from '~/notice-messages/purchase-complete'
 import { lineClient } from '~/utils/line'
 import { stripe } from '~/utils/stripe'
 
@@ -13,7 +14,7 @@ export default async (event: Stripe.Event): Promise<void> => {
     const customer = await stripe.customers.retrieve(customerId)
     if (!customer.deleted) {
       const { description: userId } = customer
-      await lineClient.pushMessage(userId!, [])
+      await lineClient.pushMessage(userId!, msgPurchaseComplete)
     }
 
     console.info('payment_intent.succeeded')
