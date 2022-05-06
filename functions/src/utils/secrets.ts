@@ -9,3 +9,4 @@ export const LINE_MESSAGING_CHANNEL_SECRET = process.env.LINE_MESSAGING_CHANNEL_
 // Stripe
 
 export const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY as string
+export const STRIPE_WEBHOOK_SIGNATURE_SECRET = process.env.STRIPE_WEBHOOK_SIGNATURE_SECRET as string
