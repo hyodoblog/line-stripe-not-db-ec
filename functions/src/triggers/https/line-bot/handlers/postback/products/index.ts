@@ -1,7 +1,9 @@
 import { PostbackEvent } from '@line/bot-sdk'
 import { errorLogger } from '~/utils/util'
 import { postbackProductsDetailHandler } from './detail'
+import { postbackProductsGoodHandler } from './good'
 import { postbackProductsListHandler } from './list'
+import { postbackProductsServiceHandler } from './service'
 
 export const postbackProductsHandler = async (event: PostbackEvent): Promise<void> => {
   try {
@@ -13,9 +15,9 @@ export const postbackProductsHandler = async (event: PostbackEvent): Promise<voi
       const [, productType, id] = data.split('.')
       switch (productType) {
         case 'good':
-          return
+          return await postbackProductsGoodHandler(event, id)
         case 'service':
-          return
+          return await postbackProductsServiceHandler(event, id)
         case 'detail':
           return await postbackProductsDetailHandler(event, id)
       }

@@ -1,0 +1,18 @@
+import { PostbackEvent } from '@line/bot-sdk'
+import { lineClient } from '~/utils/line'
+import { getCheckoutSessionUrl, getCustomer } from '~/utils/stripe'
+import { errorLogger } from '~/utils/util'
+import { msgPurchase } from '~line/notice-messages/purchase'
+
+export const postbackProductsGoodHandler = async (event: PostbackEvent, priceId: string): Promise<void> => {
+  try {
+    const customer = await getCustomer(event.source.userId!)
+    console.info(priceId)
+    const url = await getCheckoutSessionUrl(customer.id, priceId, 'good')
+
+    await lineClient.replyMessage(event.replyToken, msgPurchase(url))
+  } catch (err) {
+    errorLogger(err)
+    throw new Error('postback products good handler')
+  }
+}
