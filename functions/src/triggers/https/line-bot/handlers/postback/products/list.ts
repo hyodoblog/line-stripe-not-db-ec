@@ -2,7 +2,7 @@ import { PostbackEvent } from '@line/bot-sdk'
 import { lineClient } from '~/utils/line'
 import { getProducts, stripe } from '~/utils/stripe'
 import { errorLogger } from '~/utils/util'
-import { MsgProductList, msgProducts } from '~line/notice-messages/products'
+import { MsgProductList, msgProducts } from '~/notice-messages/products'
 
 export const postbackProductsListHandler = async (event: PostbackEvent): Promise<void> => {
   try {

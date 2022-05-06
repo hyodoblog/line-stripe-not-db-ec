@@ -3,7 +3,7 @@ import { lineClient } from '~/utils/line'
 import { LINE_FRIEND_URL } from '~/utils/secrets'
 import { getCustomer, stripe } from '~/utils/stripe'
 import { errorLogger } from '~/utils/util'
-import { msgMypage } from '~line/notice-messages/mypage'
+import { msgMypage } from '~/notice-messages/mypage'
 
 export const postbackMypageHandler = async (event: PostbackEvent): Promise<void> => {
   try {

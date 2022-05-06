@@ -3,7 +3,7 @@ import Stripe from 'stripe'
 import { lineClient } from '~/utils/line'
 import { getPricesByProductId, stripe } from '~/utils/stripe'
 import { errorLogger } from '~/utils/util'
-import { msgProduct, MsgProduct } from '~line/notice-messages/product'
+import { msgProduct, MsgProduct } from '~/notice-messages/product'
 
 const getGoogItemByPrices = (
   prices: Stripe.Price[]
