@@ -7,7 +7,6 @@ import { msgPurchase } from '~/notice-messages/purchase'
 export const postbackProductsGoodHandler = async (event: PostbackEvent, priceId: string): Promise<void> => {
   try {
     const customer = await getCustomer(event.source.userId!)
-    console.info(priceId)
     const url = await getCheckoutSessionUrl(customer.id, priceId, 'good')
 
     await lineClient.replyMessage(event.replyToken, msgPurchase(url))

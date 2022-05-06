@@ -1,5 +1,5 @@
 import express, { Request, Response, json, urlencoded, raw } from 'express'
-import { region, RuntimeOptions } from 'firebase-functions'
+import { logger, region, RuntimeOptions } from 'firebase-functions'
 
 import signatureMiddleware from './middleware/signature.middleware'
 import customerSubscriptionCreated from './webhook/customer-subscription-created'
@@ -27,7 +27,7 @@ const handler = async (req: Request, res: Response) => {
     }
     res.status(200).send('success').end()
   } catch (err) {
-    console.error(err)
+    logger.error(err)
     res.status(404).end()
   }
 }

@@ -8,5 +8,5 @@ if (!process.env.FUNCTION_TARGET || process.env.FUNCTION_TARGET === 'lineBot') {
 }
 
 if (!process.env.FUNCTION_TARGET || process.env.FUNCTION_TARGET === 'stripeWebhook') {
-  exports.lineBot = require('./triggers/https/stripe-webhook')
+  exports.stripeWebhook = require('./triggers/https/stripe-webhook')
 }
