@@ -10,7 +10,7 @@ export const msgMypage = (uri: string): FlexMessage => {
       contents: [
         {
           type: 'text',
-          text: 'こちらより注文履歴&マイページが確認できます。\n有効期限は1時間です。',
+          text: '有効期限は1時間です。',
           weight: 'regular',
           align: 'center',
           wrap: true

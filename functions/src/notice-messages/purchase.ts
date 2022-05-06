@@ -10,7 +10,7 @@ export const msgPurchase = (uri: string): FlexMessage => {
       contents: [
         {
           type: 'text',
-          text: 'こちらより購入ができます。\n有効期限は1時間です。',
+          text: '有効期限は1時間です。',
           weight: 'regular',
           align: 'center',
           wrap: true
@@ -28,8 +28,7 @@ export const msgPurchase = (uri: string): FlexMessage => {
             label: '決済ページへ',
             uri
           },
-          color: '#D6F009FF',
-          style: 'secondary'
+          style: 'primary'
         }
       ]
     },
