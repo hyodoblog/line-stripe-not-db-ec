@@ -70,7 +70,7 @@ export const msgProducts = (products: MsgProductList[]): FlexMessage => {
               type: 'postback',
               label: '今すぐ購入する',
               displayText: '今すぐ購入する。',
-              data: `products_good_${product.priceId}`
+              data: `products.good.${product.priceId}`
             },
             style: 'primary'
           },
@@ -80,7 +80,7 @@ export const msgProducts = (products: MsgProductList[]): FlexMessage => {
               type: 'postback',
               label: '詳細を見る',
               displayText: '詳細を見る。',
-              data: `products_detail_${product.productId}`
+              data: `products.detail.${product.productId}`
             },
             style: 'secondary'
           }

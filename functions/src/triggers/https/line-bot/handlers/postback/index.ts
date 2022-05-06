@@ -1,5 +1,4 @@
 import { PostbackEvent } from '@line/bot-sdk'
-import Stripe from 'stripe'
 import { errorLogger } from '~/utils/util'
 import { postbackMypageHandler } from './mypage'
 import { postbackProductsHandler } from './products'

@@ -65,7 +65,7 @@ export const msgProduct = (product: MsgProduct): FlexMessage => {
             type: 'postback',
             label: '今すぐ購入する',
             displayText: '今すぐ購入する',
-            data: `products_good_${product.goodPriceId}`
+            data: `products.good.${product.goodPriceId}`
           },
           style: 'primary'
         },
@@ -75,7 +75,7 @@ export const msgProduct = (product: MsgProduct): FlexMessage => {
             type: 'postback',
             label: '詳細を見る',
             displayText: '詳細を見る。',
-            data: `products_service_${product.servicePriceId}`
+            data: `products.service.${product.servicePriceId}`
           },
           style: 'secondary'
         }
