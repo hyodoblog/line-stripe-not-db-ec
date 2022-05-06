@@ -1,4 +1,5 @@
 import { Stripe } from 'stripe'
+import { lineClient } from '~/utils/line'
 import { stripe } from '~/utils/stripe'
 
 interface ReqObj {
@@ -11,7 +12,10 @@ export default async (event: Stripe.Event): Promise<void> => {
     const stripeCustomerId = data.customer
 
     const customer = await stripe.customers.retrieve(stripeCustomerId)
-    console.info(customer)
+    if (!customer.deleted) {
+      const { description: userId } = customer
+      await lineClient.pushMessage(userId)
+    }
 
     console.info('customer.subscription.created')
   } catch (err) {
