@@ -8,6 +8,8 @@ export interface MsgProduct {
   amount: number
 }
 
+export type ProductType = 'single' | ''
+
 export const msgProducts = (products: MsgProduct[]): FlexMessage => {
   const productContents: FlexBubble[] = []
 
@@ -67,20 +69,20 @@ export const msgProducts = (products: MsgProduct[]): FlexMessage => {
           {
             type: 'button',
             action: {
-              type: 'uri',
-              label: '購入する',
-              uri: 'https://linecorp.com'
+              type: 'postback',
+              label: '今すぐ購入する',
+              data: `products_good_${product.priceId}`
             },
             style: 'primary'
           },
           {
             type: 'button',
             action: {
-              type: 'uri',
-              label: '定期購入する',
-              uri: 'https://linecorp.com'
+              type: 'postback',
+              label: '詳細を見る',
+              data: `products_detail`
             },
-            style: 'primary'
+            style: 'secondary'
           }
         ]
       }
