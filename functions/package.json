@@ -4,7 +4,7 @@
   "scripts": {
     "build": "tsc",
     "build:re": "rm -rf dist && yarn build",
-    "dev": "yarn build && firebase emulators:start --only functions",
+    "dev": "yarn build:re && firebase emulators:start --only functions",
     "shell": "yarn build && firebase functions:shell",
     "start": "yarn shell",
     "logs": "firebase functions:log",
