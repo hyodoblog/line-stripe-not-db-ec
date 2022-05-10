@@ -28,6 +28,7 @@ export const msgPurchase = (uri: string): FlexMessage => {
             label: '決済ページへ',
             uri
           },
+          color: '#FF6B00',
           style: 'primary'
         }
       ]

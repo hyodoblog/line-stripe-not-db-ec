@@ -28,6 +28,7 @@ export const msgMypage = (uri: string): FlexMessage => {
             label: 'マイページを見る',
             uri
           },
+          color: '#003CF0',
           style: 'primary'
         }
       ]
