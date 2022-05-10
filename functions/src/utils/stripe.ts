@@ -1,5 +1,5 @@
 import Stripe from 'stripe'
-import { LINE_FRIEND_URL, STRIPE_SECRET_KEY } from '~/utils/secrets'
+import { STRIPE_SECRET_KEY } from '~/utils/secrets'
 import { lineClient } from './line'
 
 export const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: '2020-08-27' })
