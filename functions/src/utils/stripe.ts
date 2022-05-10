@@ -74,3 +74,17 @@ export const getCheckoutSessionUrl = async (
 
   return url!
 }
+
+export const getInvoiceUrl = async (customerId: string, priceId: string): Promise<string> => {
+  await stripe.invoiceItems.create({ customer: customerId, price: priceId })
+  const { id: invoiceId } = await stripe.invoices.create({
+    customer: customerId,
+    payment_settings: { payment_method_types: ['card', 'konbini'] },
+    collection_method: 'send_invoice',
+    days_until_due: 7
+  })
+  await stripe.invoices.sendInvoice(invoiceId)
+  const { hosted_invoice_url } = await stripe.invoices.retrieve(invoiceId)
+
+  return hosted_invoice_url!
+}
