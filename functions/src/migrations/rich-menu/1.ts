@@ -3,7 +3,7 @@ import { RichMenu } from '@line/bot-sdk'
 export const richmenuData1: RichMenu = {
   size: {
     width: 1200,
-    height: 400
+    height: 300
   },
   selected: true,
   name: 'リッチメニュー',
@@ -14,7 +14,7 @@ export const richmenuData1: RichMenu = {
         x: 0,
         y: 0,
         width: 300,
-        height: 400
+        height: 300
       },
       action: {
         type: 'postback',
@@ -27,7 +27,7 @@ export const richmenuData1: RichMenu = {
         x: 301,
         y: 0,
         width: 300,
-        height: 400
+        height: 300
       },
       action: {
         type: 'postback',
@@ -40,7 +40,7 @@ export const richmenuData1: RichMenu = {
         x: 601,
         y: 0,
         width: 300,
-        height: 400
+        height: 300
       },
       action: {
         type: 'uri',
@@ -52,7 +52,7 @@ export const richmenuData1: RichMenu = {
         x: 901,
         y: 0,
         width: 300,
-        height: 400
+        height: 300
       },
       action: {
         type: 'uri',
