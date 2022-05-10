@@ -21,6 +21,7 @@ export const msgProduct = (product: MsgProduct): FlexMessage => {
         text: '単体で購入する。',
         data: `products.good.${product.goodPriceId}`
       },
+      color: '#003CF0',
       style: 'primary'
     })
   }
@@ -33,6 +34,7 @@ export const msgProduct = (product: MsgProduct): FlexMessage => {
         text: '定期購入する。',
         data: `products.service.${product.servicePriceId}`
       },
+      color: '#001E77',
       style: 'primary'
     })
   }
@@ -41,17 +43,6 @@ export const msgProduct = (product: MsgProduct): FlexMessage => {
     type: 'bubble',
     size: 'giga',
     direction: 'ltr',
-    header: {
-      type: 'box',
-      layout: 'vertical',
-      contents: [
-        {
-          type: 'text',
-          text: product.name,
-          align: 'center'
-        }
-      ]
-    },
     hero: {
       type: 'image',
       url: product.imgUrl,
@@ -65,7 +56,14 @@ export const msgProduct = (product: MsgProduct): FlexMessage => {
       contents: [
         {
           type: 'spacer',
-          size: 'xxl'
+          size: 'xs'
+        },
+        {
+          type: 'text',
+          text: product.name,
+          weight: 'bold',
+          size: 'xl',
+          align: 'start'
         },
         {
           type: 'text',
@@ -75,7 +73,7 @@ export const msgProduct = (product: MsgProduct): FlexMessage => {
         },
         {
           type: 'spacer',
-          size: 'xxl'
+          size: 'xs'
         }
       ]
     },

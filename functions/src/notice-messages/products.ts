@@ -72,6 +72,7 @@ export const msgProducts = (products: MsgProductList[]): FlexMessage => {
               displayText: '単体で購入する。',
               data: `products.good.${product.priceId}`
             },
+            color: '#003CF0FF',
             style: 'primary'
           },
           {
