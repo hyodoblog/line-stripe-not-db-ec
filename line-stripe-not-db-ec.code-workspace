@@ -4,13 +4,13 @@
       "path": "."
     },
     {
-      "path": "./functions"
+      "path": "."
     },
     {
-      "path": "./functions/src/triggers/https/line-bot"
+      "path": "./src/triggers/https/line-bot"
     },
     {
-      "path": "./functions/src/triggers/https/stripe-webhook"
+      "path": "./src/triggers/https/stripe-webhook"
     }
   ],
   "settings": {
