@@ -42,6 +42,6 @@ export const postbackProductsOneTimeHandler = async (event: PostbackEvent, price
     await lineClient.replyMessage(event.replyToken, msgPurchase(url))
   } catch (err) {
     errorConsole(err)
-    throw new Error('postback products good handler')
+    throw new Error('postback products one-time handler')
   }
 }

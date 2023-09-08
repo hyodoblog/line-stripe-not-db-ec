@@ -31,7 +31,7 @@ const purchase = async (customerId: string, priceId: string): Promise<{ url: str
   return { url }
 }
 
-export const postbackProductsServiceHandler = async (event: PostbackEvent, priceId: string): Promise<void> => {
+export const postbackProductsRegularHandler = async (event: PostbackEvent, priceId: string): Promise<void> => {
   try {
     const customer = await getCustomer(event.source.userId!)
     const { url } = await purchase(customer.id, priceId)
@@ -39,6 +39,6 @@ export const postbackProductsServiceHandler = async (event: PostbackEvent, price
     await lineClient.replyMessage(event.replyToken, msgPurchase(url))
   } catch (err) {
     errorConsole(err)
-    throw new Error('postback products service handler')
+    throw new Error('postback products regular handler')
   }
 }

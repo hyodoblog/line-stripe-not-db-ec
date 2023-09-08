@@ -1,9 +1,9 @@
 import { PostbackEvent } from '@line/bot-sdk'
 import { errorConsole } from '~/utils/util'
 import { postbackProductsDetailHandler } from './detail'
-import { postbackProductsGoodHandler, postbackProductsOneTimeHandler } from './one-time'
+import { postbackProductsOneTimeHandler } from './one-time'
 import { postbackProductsListHandler } from './list'
-import { postbackProductsServiceHandler } from './service'
+import { postbackProductsRegularHandler } from './regular'
 
 export const postbackProductsHandler = async (event: PostbackEvent): Promise<void> => {
   try {
@@ -16,8 +16,8 @@ export const postbackProductsHandler = async (event: PostbackEvent): Promise<voi
       switch (productType) {
         case 'one-time':
           return await postbackProductsOneTimeHandler(event, priceId)
-        case 'service':
-          return await postbackProductsServiceHandler(event, priceId)
+        case 'regular':
+          return await postbackProductsRegularHandler(event, priceId)
         case 'detail':
           return await postbackProductsDetailHandler(event, priceId)
       }
