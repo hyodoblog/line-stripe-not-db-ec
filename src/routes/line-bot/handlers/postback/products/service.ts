@@ -24,7 +24,11 @@ const purchase = async (customerId: string, priceId: string): Promise<{ url: str
     cancel_url: LINE_FRIEND_URL
   })
 
-  return { url: url! }
+  if (url === null) {
+    throw new Error('url is null')
+  }
+
+  return { url }
 }
 
 export const postbackProductsServiceHandler = async (event: PostbackEvent, priceId: string): Promise<void> => {
