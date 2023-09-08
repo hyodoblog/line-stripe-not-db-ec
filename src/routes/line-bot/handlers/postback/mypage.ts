@@ -1,5 +1,5 @@
 import { PostbackEvent } from '@line/bot-sdk'
-import { lineClient } from '~/utils/line'
+import { lineClient } from '~/libs/line/line.client'
 import { LINE_FRIEND_URL } from '~/utils/secrets'
 import { getCustomer, stripe } from '~/utils/stripe'
 import { errorConsole } from '~/utils/util'

@@ -1,16 +1,14 @@
-import Stripe from 'stripe'
-import { STRIPE_SECRET_KEY } from '~/utils/secrets'
-import { lineClient } from './line'
-
-export const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: '2023-08-16' })
+import type { Stripe } from 'stripe'
+import { stripeClient } from './stripe.client'
+import { lineClient } from '~/libs/line/line.client'
 
 // customers
 
 export const getCustomer = async (userId: string): Promise<Stripe.Customer> => {
-  const { data } = await stripe.customers.search({ query: `metadata['userId']:'${userId}'` })
+  const { data } = await stripeClient.customers.search({ query: `metadata['userId']:'${userId}'` })
   if (data.length === 0) {
     const lineProfile = await lineClient.getProfile(userId)
-    return await stripe.customers.create({
+    return await stripeClient.customers.create({
       name: lineProfile.displayName || '未設定',
       description: userId,
       metadata: {
@@ -25,13 +23,13 @@ export const getCustomer = async (userId: string): Promise<Stripe.Customer> => {
 // products
 
 export const getProducts = async (): Promise<Stripe.Product[]> => {
-  const { data } = await stripe.products.list()
+  const { data } = await stripeClient.products.list()
   return data
 }
 
 // prices
 
 export const getPricesByProductId = async (productId: string): Promise<Stripe.Price[]> => {
-  const { data } = await stripe.prices.search({ query: `product: '${productId}'` })
+  const { data } = await stripeClient.prices.search({ query: `product: '${productId}'` })
   return data
 }

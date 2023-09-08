@@ -1,7 +1,7 @@
 import { Request } from 'express'
-import { stripe } from '~/utils/stripe'
+import { stripeClient } from '~/libs/stripe/stripe.client'
 import { STRIPE_WEBHOOK_SECRET } from '~/utils/secrets'
-import { Stripe } from 'stripe'
+import type { Stripe } from 'stripe'
 
 export default (req: Request): Stripe.Event => {
   const signature = req.headers['stripe-signature']
@@ -9,5 +9,5 @@ export default (req: Request): Stripe.Event => {
   // @ts-ignore
   const body = req.rawBody
 
-  return stripe.webhooks.constructEvent(body as string, signature, STRIPE_WEBHOOK_SECRET)
+  return stripeClient.webhooks.constructEvent(body as string, signature, STRIPE_WEBHOOK_SECRET)
 }

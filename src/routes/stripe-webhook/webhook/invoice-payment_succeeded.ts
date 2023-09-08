@@ -1,7 +1,7 @@
 import { Stripe } from 'stripe'
 import { msgPurchaseComplete } from '~/notice-messages/purchase-complete'
-import { lineClient } from '~/utils/line'
-import { stripe } from '~/utils/stripe'
+import { lineClient } from '~/libs/line/line.client'
+import { stripeClient } from '~/libs/stripe/stripe.client'
 
 interface ReqObj {
   customer: string

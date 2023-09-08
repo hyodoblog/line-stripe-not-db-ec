@@ -3,7 +3,7 @@ import '../../alias'
 import { RichMenu } from '@line/bot-sdk'
 import { readFileSync } from 'fs'
 import { join } from 'path'
-import { lineClient } from '~/utils/line'
+import { lineClient } from '~/libs/line/line.client'
 import { richmenuData1 } from './1'
 
 const allDeleteRichmenu = async (): Promise<void> => {
