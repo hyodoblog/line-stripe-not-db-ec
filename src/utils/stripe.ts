@@ -2,7 +2,7 @@ import Stripe from 'stripe'
 import { STRIPE_SECRET_KEY } from '~/utils/secrets'
 import { lineClient } from './line'
 
-export const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: '2020-08-27' })
+export const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: '2023-08-16' })
 
 // customers
 
