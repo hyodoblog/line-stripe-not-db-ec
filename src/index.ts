@@ -4,7 +4,7 @@ import lineBotRouter from './routes/line-bot'
 import stripeWebhookRouter from './routes/stripe-webhook'
 
 const app = express()
-const port = 3000
+const port = 5001
 
 app.post('/line-bot', lineBotRouter)
 app.post('/stripe-webhook', stripeWebhookRouter)

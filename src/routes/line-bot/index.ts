@@ -6,7 +6,6 @@ import { handlers } from './handlers'
 
 const router = Router()
 
-router.use()
 router.post('/', middleware(lineMiddlewareConfig), (req, res) =>
   Promise.all(req.body.events.map(handlers))
     .then(() => {
