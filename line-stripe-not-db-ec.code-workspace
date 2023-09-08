@@ -7,10 +7,10 @@
       "path": "."
     },
     {
-      "path": "./src/triggers/https/line-bot"
+      "path": "./src/routes/line-bot"
     },
     {
-      "path": "./src/triggers/https/stripe-webhook"
+      "path": "./src/routes/stripe-webhook"
     }
   ],
   "settings": {

@@ -18,7 +18,8 @@
     "outDir": "./dist",
     "paths": {
       "~/*": ["./src/*"],
-      "~line/*": ["./src/triggers/https/line-bot/*"]
+      "~lineBot/*": ["src/routes/line-bot/*"],
+      "~stripeWebhook/*": ["src/routes/stripe-webhook/*"],
     }
   },
   "exclude": ["dist", "node_modules"],

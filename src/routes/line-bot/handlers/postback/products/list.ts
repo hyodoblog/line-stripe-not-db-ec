@@ -1,7 +1,7 @@
 import { PostbackEvent } from '@line/bot-sdk'
 import { lineClient } from '~/utils/line'
 import { getProducts, stripe } from '~/utils/stripe'
-import { errorLogger } from '~/utils/util'
+import { errorConsole } from '~/utils/util'
 import { MsgProductList, msgProducts } from '~/notice-messages/products'
 
 export const postbackProductsListHandler = async (event: PostbackEvent): Promise<void> => {
@@ -24,7 +24,7 @@ export const postbackProductsListHandler = async (event: PostbackEvent): Promise
 
     await lineClient.replyMessage(event.replyToken, msgProducts(_products))
   } catch (err) {
-    errorLogger(err)
+    errorConsole(err)
     throw new Error('postback products list handler')
   }
 }

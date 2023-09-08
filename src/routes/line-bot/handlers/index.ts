@@ -3,7 +3,7 @@ import { lineClient } from '~/utils/line'
 import { msgError } from '~/notice-messages/error'
 
 import { followHandler } from './follow'
-import { errorLogger } from '~/utils/util'
+import { errorConsole } from '~/utils/util'
 import { postbackHandler } from './postback'
 
 export const handlers = async (event: WebhookEvent): Promise<void> => {
@@ -16,7 +16,7 @@ export const handlers = async (event: WebhookEvent): Promise<void> => {
     }
   } catch (err) {
     lineClient.pushMessage(event.source.userId!, msgError).catch
-    errorLogger(err)
+    errorConsole(err)
     throw new Error('handlers')
   }
 }

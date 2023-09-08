@@ -1,12 +1,11 @@
-import express, { Request, Response, json, urlencoded, raw } from 'express'
-import { logger, region, RuntimeOptions } from 'firebase-functions'
+import { Request, Response, json, urlencoded, raw, Router } from 'express'
 
 import signatureMiddleware from './middleware/signature.middleware'
 import customerSubscriptionCreated from './webhook/customer-subscription-created'
 import customerSubscriptionDeleted from './webhook/customer-subscription-deleted'
 import invoicePayment_succeeded from './webhook/invoice-payment_succeeded'
 
-const app = express()
+const router = Router()
 
 // *********
 // 関数群
@@ -31,7 +30,7 @@ const handler = async (req: Request, res: Response) => {
     }
     res.status(200).send('success').end()
   } catch (err) {
-    logger.error(err)
+    console.error(err)
     res.status(404).end()
   }
 }
@@ -43,17 +42,9 @@ const rawBodySaver = function (req: Request, _: Response, buf: Buffer, encoding:
   }
 }
 
-app.use(json({ verify: rawBodySaver }))
-app.use(urlencoded({ verify: rawBodySaver, extended: true }))
-app.use(raw({ verify: rawBodySaver, type: '*/*' }))
-app.post('/', handler)
+router.use(json({ verify: rawBodySaver }))
+router.use(urlencoded({ verify: rawBodySaver, extended: true }))
+router.use(raw({ verify: rawBodySaver, type: '*/*' }))
+router.post('/', handler)
 
-// *************
-// Functions設定
-
-const runtimeOpts: RuntimeOptions = {
-  timeoutSeconds: 540,
-  memory: '1GB'
-}
-
-module.exports = region('asia-northeast1').runWith(runtimeOpts).https.onRequest(app)
+export default router

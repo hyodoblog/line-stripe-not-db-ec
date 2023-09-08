@@ -1,14 +1,14 @@
 import './alias'
+import express from 'express'
+import lineBotRouter from './routes/line-bot'
+import stripeWebhookRouter from './routes/stripe-webhook'
 
-const target = process.env.FUNCTION_TARGET
+const app = express()
+const port = 3000
 
-// ------------
-// https
+app.post('/line-bot', lineBotRouter)
+app.post('/stripe-webhook', stripeWebhookRouter)
 
-if (!target || target === 'lineBot') {
-  exports.lineBot = require('./triggers/https/line-bot')
-}
-
-if (!target || target === 'stripeWebhook') {
-  exports.stripeWebhook = require('./triggers/https/stripe-webhook')
-}
+app.listen(port, () => {
+  console.info(`Example app listening at http://localhost:${port}`)
+})

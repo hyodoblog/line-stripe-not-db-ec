@@ -1,7 +1,7 @@
 import { PostbackEvent } from '@line/bot-sdk'
 import { lineClient } from '~/utils/line'
 import { getCustomer, stripe } from '~/utils/stripe'
-import { errorLogger } from '~/utils/util'
+import { errorConsole } from '~/utils/util'
 import { msgPurchase } from '~/notice-messages/purchase'
 
 const purchase = async (customerId: string, priceId: string): Promise<{ url: string }> => {
@@ -25,7 +25,7 @@ export const postbackProductsGoodHandler = async (event: PostbackEvent, priceId:
 
     await lineClient.replyMessage(event.replyToken, msgPurchase(url))
   } catch (err) {
-    errorLogger(err)
+    errorConsole(err)
     throw new Error('postback products good handler')
   }
 }

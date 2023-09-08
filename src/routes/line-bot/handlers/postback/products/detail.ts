@@ -2,7 +2,7 @@ import { PostbackEvent } from '@line/bot-sdk'
 import Stripe from 'stripe'
 import { lineClient } from '~/utils/line'
 import { getPricesByProductId, stripe } from '~/utils/stripe'
-import { errorLogger } from '~/utils/util'
+import { errorConsole } from '~/utils/util'
 import { msgProduct, MsgProduct } from '~/notice-messages/product'
 
 const getGoogItemByPrices = (
@@ -46,7 +46,7 @@ export const postbackProductsDetailHandler = async (event: PostbackEvent, produc
 
     await lineClient.replyMessage(event.replyToken, msgProduct(product))
   } catch (err) {
-    errorLogger(err)
+    errorConsole(err)
     throw new Error('postback products detail handler')
   }
 }

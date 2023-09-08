@@ -1,5 +1,5 @@
 import { PostbackEvent } from '@line/bot-sdk'
-import { errorLogger } from '~/utils/util'
+import { errorConsole } from '~/utils/util'
 import { postbackProductsDetailHandler } from './detail'
 import { postbackProductsGoodHandler } from './good'
 import { postbackProductsListHandler } from './list'
@@ -23,7 +23,7 @@ export const postbackProductsHandler = async (event: PostbackEvent): Promise<voi
       }
     }
   } catch (err) {
-    errorLogger(err)
+    errorConsole(err)
     throw new Error('postback products handler')
   }
 }

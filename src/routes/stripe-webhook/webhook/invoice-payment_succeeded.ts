@@ -1,4 +1,3 @@
-import { logger } from 'firebase-functions'
 import { Stripe } from 'stripe'
 import { msgPurchaseComplete } from '~/notice-messages/purchase-complete'
 import { lineClient } from '~/utils/line'
@@ -19,10 +18,10 @@ export default async (event: Stripe.Event): Promise<void> => {
       await lineClient.pushMessage(userId!, msgPurchaseComplete)
     }
 
-    logger.info('customer.subscription.created')
+    console.info('invoice.payment_succeeded')
   } catch (err) {
-    logger.error('customer.subscription.created')
-    logger.error(err)
+    console.error('invoice.payment_succeeded')
+    console.error(err)
     throw Error
   }
 }

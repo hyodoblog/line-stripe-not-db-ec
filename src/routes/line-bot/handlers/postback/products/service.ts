@@ -1,7 +1,7 @@
 import { PostbackEvent } from '@line/bot-sdk'
 import { lineClient } from '~/utils/line'
 import { getCustomer, stripe } from '~/utils/stripe'
-import { errorLogger } from '~/utils/util'
+import { errorConsole } from '~/utils/util'
 import { msgPurchase } from '~/notice-messages/purchase'
 import { LINE_FRIEND_URL } from '~/utils/secrets'
 
@@ -33,7 +33,7 @@ export const postbackProductsServiceHandler = async (event: PostbackEvent, price
 
     await lineClient.replyMessage(event.replyToken, msgPurchase(url))
   } catch (err) {
-    errorLogger(err)
+    errorConsole(err)
     throw new Error('postback products service handler')
   }
 }

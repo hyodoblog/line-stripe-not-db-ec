@@ -1,4 +1,3 @@
-import { logger } from 'firebase-functions'
 import { Stripe } from 'stripe'
 import { msgPurchaseCancel } from '~/notice-messages/purchase-cancel'
 import { lineClient } from '~/utils/line'
@@ -18,10 +17,10 @@ export default async (event: Stripe.Event): Promise<void> => {
       await lineClient.pushMessage(userId!, msgPurchaseCancel)
     }
 
-    logger.info('customer.subscription.deleted')
+    console.info('customer.subscription.deleted')
   } catch (err) {
-    logger.error('customer.subscription.deleted')
-    logger.error(err)
+    console.error('customer.subscription.deleted')
+    console.error(err)
     throw Error
   }
 }
