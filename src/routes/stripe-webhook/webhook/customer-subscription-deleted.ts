@@ -11,7 +11,7 @@ export default async (event: Stripe.Event): Promise<void> => {
   try {
     const { customer: customerId } = event.data.object as ReqObj
 
-    const customer = await stripe.customers.retrieve(customerId)
+    const customer = await stripeClient.customers.retrieve(customerId)
     if (!customer.deleted) {
       const { description: userId } = customer
       await lineClient.pushMessage(userId!, msgPurchaseCancel)

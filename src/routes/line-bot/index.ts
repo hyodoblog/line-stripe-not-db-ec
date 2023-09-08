@@ -1,8 +1,8 @@
 import { middleware } from '@line/bot-sdk'
 import { Router } from 'express'
-import { lineMiddlewareConfig } from '~/utils/line'
 import { errorConsole } from '~/utils/util'
 import { handlers } from './handlers'
+import { lineMiddlewareConfig } from '~/libs/line/line.client'
 
 const router = Router()
 

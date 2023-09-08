@@ -1,12 +1,13 @@
 import { PostbackEvent } from '@line/bot-sdk'
 import { lineClient } from '~/libs/line/line.client'
-import { getCustomer, stripe } from '~/utils/stripe'
 import { errorConsole } from '~/utils/util'
 import { msgPurchase } from '~/notice-messages/purchase'
 import { LINE_FRIEND_URL } from '~/utils/secrets'
+import { stripeClient } from '~/libs/stripe/stripe.client'
+import { getCustomer } from '~/libs/stripe/stripe.domain'
 
 const purchase = async (customerId: string, priceId: string): Promise<{ url: string }> => {
-  const { url } = await stripe.checkout.sessions.create({
+  const { url } = await stripeClient.checkout.sessions.create({
     customer: customerId,
     line_items: [
       {

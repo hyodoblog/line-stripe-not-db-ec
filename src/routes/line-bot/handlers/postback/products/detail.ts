@@ -1,9 +1,10 @@
 import { PostbackEvent } from '@line/bot-sdk'
 import Stripe from 'stripe'
 import { lineClient } from '~/libs/line/line.client'
-import { getPricesByProductId, stripe } from '~/utils/stripe'
+import { stripeClient } from '~/libs/stripe/stripe.client'
 import { errorConsole } from '~/utils/util'
 import { msgProduct, MsgProduct } from '~/notice-messages/product'
+import { getPricesByProductId } from '~/libs/stripe/stripe.domain'
 
 const getGoogItemByPrices = (
   prices: Stripe.Price[]
@@ -29,7 +30,7 @@ const getServiceItemByPrices = (
 
 export const postbackProductsDetailHandler = async (event: PostbackEvent, productId: string): Promise<void> => {
   try {
-    const _product = await stripe.products.retrieve(productId)
+    const _product = await stripeClient.products.retrieve(productId)
     const prices = await getPricesByProductId(productId)
     const goodItem = getGoogItemByPrices(prices)
     const serviceItem = getServiceItemByPrices(prices)

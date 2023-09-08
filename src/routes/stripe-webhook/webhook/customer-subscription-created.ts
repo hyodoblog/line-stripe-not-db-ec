@@ -12,7 +12,7 @@ export default async (event: Stripe.Event): Promise<void> => {
     const data = event.data.object as ReqObj
     const stripeCustomerId = data.customer
 
-    const customer = await stripe.customers.retrieve(stripeCustomerId)
+    const customer = await stripeClient.customers.retrieve(stripeCustomerId)
     if (!customer.deleted) {
       const { description: userId } = customer
       await lineClient.pushMessage(userId!, msgPurchaseComplete)

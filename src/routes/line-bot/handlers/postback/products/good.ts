@@ -1,19 +1,20 @@
 import { PostbackEvent } from '@line/bot-sdk'
 import { lineClient } from '~/libs/line/line.client'
-import { getCustomer, stripe } from '~/utils/stripe'
 import { errorConsole } from '~/utils/util'
 import { msgPurchase } from '~/notice-messages/purchase'
+import { stripeClient } from '~/libs/stripe/stripe.client'
+import { getCustomer } from '~/libs/stripe/stripe.domain'
 
 const purchase = async (customerId: string, priceId: string): Promise<{ url: string }> => {
-  await stripe.invoiceItems.create({ customer: customerId, price: priceId })
-  const { id: invoiceId } = await stripe.invoices.create({
+  await stripeClient.invoiceItems.create({ customer: customerId, price: priceId })
+  const { id: invoiceId } = await stripeClient.invoices.create({
     customer: customerId,
     payment_settings: { payment_method_types: ['card', 'konbini'] },
     collection_method: 'send_invoice',
     days_until_due: 7
   })
-  await stripe.invoices.sendInvoice(invoiceId)
-  const { hosted_invoice_url } = await stripe.invoices.retrieve(invoiceId)
+  await stripeClient.invoices.sendInvoice(invoiceId)
+  const { hosted_invoice_url } = await stripeClient.invoices.retrieve(invoiceId)
 
   return { url: hosted_invoice_url! }
 }
