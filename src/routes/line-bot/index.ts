@@ -6,7 +6,7 @@ import { lineMiddlewareConfig } from '~/clients/line.client'
 
 const router = Router()
 
-router.post('/', middleware(lineMiddlewareConfig), (req, res) =>
+router.post('/line-bot', middleware(lineMiddlewareConfig), (req, res) =>
   Promise.all(req.body.events.map(handlers))
     .then(() => {
       res.status(200).end()

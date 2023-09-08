@@ -6,8 +6,8 @@ import stripeWebhookRouter from './routes/stripe-webhook'
 const app = express()
 const port = 5001
 
-app.post('/line-bot', lineBotRouter)
-app.post('/stripe-webhook', stripeWebhookRouter)
+app.use(lineBotRouter)
+app.use(stripeWebhookRouter)
 
 app.listen(port, () => {
   console.info(`App listening at http://localhost:${port}`)

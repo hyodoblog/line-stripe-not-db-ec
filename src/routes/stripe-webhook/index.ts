@@ -42,9 +42,12 @@ const rawBodySaver = function (req: Request, _: Response, buf: Buffer, encoding:
   }
 }
 
-router.use(json({ verify: rawBodySaver }))
-router.use(urlencoded({ verify: rawBodySaver, extended: true }))
-router.use(raw({ verify: rawBodySaver, type: '*/*' }))
-router.post('/', handler)
+router.post(
+  '/stripe-webhook',
+  json({ verify: rawBodySaver }),
+  urlencoded({ verify: rawBodySaver, extended: true }),
+  raw({ verify: rawBodySaver, type: '*/*' }),
+  handler
+)
 
 export default router
