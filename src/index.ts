@@ -10,5 +10,5 @@ app.post('/line-bot', lineBotRouter)
 app.post('/stripe-webhook', stripeWebhookRouter)
 
 app.listen(port, () => {
-  console.info(`Example app listening at http://localhost:${port}`)
+  console.info(`App listening at http://localhost:${port}`)
 })
