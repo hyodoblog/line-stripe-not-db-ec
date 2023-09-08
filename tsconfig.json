@@ -19,7 +19,7 @@
     "paths": {
       "~/*": ["./src/*"],
       "~lineBot/*": ["src/routes/line-bot/*"],
-      "~stripeWebhook/*": ["src/routes/stripe-webhook/*"],
+      "~stripeWebhook/*": ["src/routes/stripe-webhook/*"]
     }
   },
   "exclude": ["dist", "node_modules"],
