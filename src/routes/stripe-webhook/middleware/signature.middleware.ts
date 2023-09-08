@@ -1,7 +1,7 @@
 import { Request } from 'express'
-import { stripeClient } from '~/libs/stripe/stripe.client'
 import { STRIPE_WEBHOOK_SECRET } from '~/utils/secrets'
 import type { Stripe } from 'stripe'
+import { stripeClient } from '~/clients/stripe.client'
 
 export default (req: Request): Stripe.Event => {
   const signature = req.headers['stripe-signature']

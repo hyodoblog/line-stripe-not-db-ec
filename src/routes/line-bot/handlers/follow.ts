@@ -1,6 +1,6 @@
 import { FollowEvent } from '@line/bot-sdk'
-import { lineClient } from '~/libs/line/line.client'
-import { getCustomer } from '~/libs/stripe/stripe.domain'
+import { lineClient } from '~/clients/line.client'
+import { getCustomer } from '~/domains/customer.domain'
 import { msgFollow } from '~/notice-messages/follow'
 
 export const followHandler = async (event: FollowEvent): Promise<void> => {

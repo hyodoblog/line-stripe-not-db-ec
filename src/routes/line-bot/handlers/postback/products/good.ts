@@ -1,9 +1,9 @@
 import { PostbackEvent } from '@line/bot-sdk'
-import { lineClient } from '~/libs/line/line.client'
+import { lineClient } from '~/clients/line.client'
 import { errorConsole } from '~/utils/util'
 import { msgPurchase } from '~/notice-messages/purchase'
-import { stripeClient } from '~/libs/stripe/stripe.client'
-import { getCustomer } from '~/libs/stripe/stripe.domain'
+import { stripeClient } from '~/clients/stripe.client'
+import { getCustomer } from '~/domains/customer.domain'
 
 const purchase = async (customerId: string, priceId: string): Promise<{ url: string }> => {
   await stripeClient.invoiceItems.create({ customer: customerId, price: priceId })

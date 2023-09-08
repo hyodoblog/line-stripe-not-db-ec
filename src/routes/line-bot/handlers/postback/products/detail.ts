@@ -1,10 +1,10 @@
 import { PostbackEvent } from '@line/bot-sdk'
 import Stripe from 'stripe'
-import { lineClient } from '~/libs/line/line.client'
-import { stripeClient } from '~/libs/stripe/stripe.client'
+import { lineClient } from '~/clients/line.client'
 import { errorConsole } from '~/utils/util'
 import { msgProduct, MsgProduct } from '~/notice-messages/product'
-import { getPricesByProductId } from '~/libs/stripe/stripe.domain'
+import { stripeClient } from '~/clients/stripe.client'
+import { getPricesByProductId } from '~/domains/price.domain'
 
 const getGoogItemByPrices = (
   prices: Stripe.Price[]
