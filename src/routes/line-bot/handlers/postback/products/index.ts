@@ -12,14 +12,14 @@ export const postbackProductsHandler = async (event: PostbackEvent): Promise<voi
     if (data === 'products') {
       return await postbackProductsListHandler(event)
     } else if (data.includes('products.')) {
-      const [, productType, id] = data.split('.')
+      const [, productType, priceId] = data.split('.')
       switch (productType) {
         case 'good':
-          return await postbackProductsGoodHandler(event, id)
+          return await postbackProductsGoodHandler(event, priceId)
         case 'service':
-          return await postbackProductsServiceHandler(event, id)
+          return await postbackProductsServiceHandler(event, priceId)
         case 'detail':
-          return await postbackProductsDetailHandler(event, id)
+          return await postbackProductsDetailHandler(event, priceId)
       }
     }
   } catch (err) {
