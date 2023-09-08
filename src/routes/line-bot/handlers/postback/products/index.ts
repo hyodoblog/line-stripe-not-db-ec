@@ -14,12 +14,12 @@ export const postbackProductsHandler = async (event: PostbackEvent): Promise<voi
     } else if (data.includes('products.')) {
       const [, productType, priceId] = data.split('.')
       switch (productType) {
+        case 'detail':
+          return await postbackProductsDetailHandler(event, priceId)
         case 'one-time':
           return await postbackProductsOneTimeHandler(event, priceId)
         case 'regular':
           return await postbackProductsRegularHandler(event, priceId)
-        case 'detail':
-          return await postbackProductsDetailHandler(event, priceId)
       }
     }
   } catch (err) {
