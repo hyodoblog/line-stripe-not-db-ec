@@ -1,6 +1,6 @@
 import { RichMenu } from '@line/bot-sdk'
 
-export const richmenuData1: RichMenu = {
+export const defaultRichMenu: RichMenu = {
   size: {
     width: 1200,
     height: 300

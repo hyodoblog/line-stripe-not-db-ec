@@ -4,7 +4,7 @@ import { RichMenu } from '@line/bot-sdk'
 import { readFileSync } from 'fs'
 import { join } from 'path'
 import { lineClient } from '~/clients/line.client'
-import { richmenuData1 } from './1'
+import { defaultRichMenu } from './default'
 
 const allDeleteRichmenu = async (): Promise<void> => {
   const richmenuIds: string[] = (await lineClient.getRichMenuList()).map((value) => value.richMenuId)
@@ -29,7 +29,7 @@ const createRichmenu = async (imgPath: string, richmenu: RichMenu, isDefault = f
     await allDeleteRichmenu()
 
     const imgPath = join(__dirname, '../../../assets/rich-menu.png')
-    await createRichmenu(imgPath, richmenuData1, true)
+    await createRichmenu(imgPath, defaultRichMenu, true)
 
     console.info('finish.')
   } catch (err) {
