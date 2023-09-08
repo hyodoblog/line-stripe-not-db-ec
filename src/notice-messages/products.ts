@@ -70,7 +70,7 @@ export const msgProducts = (products: MsgProductList[]): FlexMessage => {
               type: 'postback',
               label: '単体で購入する',
               displayText: '単体で購入する。',
-              data: `products.good.${product.priceId}`
+              data: `products.one-time.${product.priceId}`
             },
             color: '#003CF0FF',
             style: 'primary'
