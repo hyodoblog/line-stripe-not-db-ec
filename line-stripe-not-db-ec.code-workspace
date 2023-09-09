@@ -8,9 +8,6 @@
     },
     {
       "path": "./src/routes/line-bot"
-    },
-    {
-      "path": "./src/routes/stripe-webhook"
     }
   ],
   "settings": {
